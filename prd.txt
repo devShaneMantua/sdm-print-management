@@ -1,0 +1,23 @@
+1. Project Overview
+- A system that helps a printing business manage and record orders digitally to reduce human errors. It accepts order details and automatically computes the total cost based on number of pages and then stores order records for viewing.
+
+2. Problem Statement
+- The printing business currently process orders manually which may results to error in computation, incorrect details and difficulty in tracking past orders. Orders are written on paper. Computations in total cost can likely happen. Orders may be lost or duplicated.
+
+3. Objectives
+- Digitize the recording of print orders
+- Accepts and process printing orders
+- Automatically compute total cost based on amount of pages and pricing
+- Store orders securely
+- Save the order in the system
+- Allow viewing of all orders
+- Retrieve specific order details
+
+4. Users
+- Printing shop staff
+- Shop owner or manager
+
+Printing Price:
+Black & White: PHP 2.00/page
+Colored: PHP: 5.00/page
+Photo Paper: PHP: 20.00/people
