@@ -1,9 +1,5 @@
-"""
-Pydantic models for the Printing Order Management System
-"""
 from pydantic import BaseModel, Field
 from typing import Optional
-from datetime import datetime
 from enum import Enum
 
 
@@ -25,21 +21,19 @@ PRICING = {
 class OrderCreate(BaseModel):
     """Request model for creating a new order"""
     customer_name: str = Field(..., min_length=1, description="Name of the customer")
+    document_name: str = Field(..., min_length=1, description="Name of the document")
+    pages: int = Field(..., gt=0, description="Number of pages to print")
     print_type: PrintType = Field(..., description="Type of printing")
-    num_pages: int = Field(..., gt=0, description="Number of pages to print")
-    description: Optional[str] = Field(None, description="Additional notes or description")
 
 
 class Order(BaseModel):
-    """Complete order model with computed fields"""
-    id: str = Field(..., description="Unique order ID")
+    """Complete order model"""
+    order_id: str = Field(..., description="Unique order ID")
     customer_name: str
+    document_name: str
+    pages: int
     print_type: PrintType
-    num_pages: int
-    price_per_page: float
     total_cost: float
-    description: Optional[str] = None
-    created_at: str = Field(..., description="ISO format datetime when order was created")
     status: str = Field(default="pending", description="Order status")
 
 

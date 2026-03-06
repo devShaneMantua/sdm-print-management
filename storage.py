@@ -1,6 +1,3 @@
-"""
-JSON file storage handler for the Printing Order Management System
-"""
 import json
 import os
 from typing import Optional
@@ -51,7 +48,7 @@ def get_order_by_id(order_id: str) -> Optional[Order]:
     """Retrieve a specific order by ID"""
     orders_data = load_orders()
     for order in orders_data:
-        if order.get("id") == order_id:
+        if order.get("order_id") == order_id:
             return Order(**order)
     return None
 
@@ -60,7 +57,7 @@ def update_order_status(order_id: str, status: str) -> Optional[Order]:
     """Update the status of an order"""
     orders = load_orders()
     for order in orders:
-        if order.get("id") == order_id:
+        if order.get("order_id") == order_id:
             order["status"] = status
             save_orders(orders)
             return Order(**order)
@@ -71,14 +68,9 @@ def delete_order(order_id: str) -> bool:
     """Delete an order by ID"""
     orders = load_orders()
     original_length = len(orders)
-    orders = [o for o in orders if o.get("id") != order_id]
+    orders = [o for o in orders if o.get("order_id") != order_id]
     
     if len(orders) < original_length:
         save_orders(orders)
         return True
     return False
-
-
-def get_order_count() -> int:
-    """Get the total number of orders"""
-    return len(load_orders())

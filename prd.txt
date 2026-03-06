@@ -1,23 +1,61 @@
+Project: SDM Print Management
+
+Product Requirements Document (PRD)
+
 1. Project Overview
-- A system that helps a printing business manage and record orders digitally to reduce human errors. It accepts order details and automatically computes the total cost based on number of pages and then stores order records for viewing.
+- A backend API that can manage and record printing orders digitally to reduce human errors. It is used by the printing shop staff to accept order details and automatically computes the total cost based on the number of pages and then stores order records for viewing. The api replaces the manual process of writing order details which can improve the accuracy and reliability of order records.
 
 2. Problem Statement
-- The printing business currently process orders manually which may results to error in computation, incorrect details and difficulty in tracking past orders. Orders are written on paper. Computations in total cost can likely happen. Orders may be lost or duplicated.
+- The printing business currently processes orders manually using handwritten logs which may result in errors such as incorrect cost computation, duplicate entries and difficulty in tracking past orders.
 
 3. Objectives
-- Digitize the recording of print orders
-- Accepts and process printing orders
-- Automatically compute total cost based on amount of pages and pricing
-- Store orders securely
-- Save the order in the system
-- Allow viewing of all orders
-- Retrieve specific order details
+- Digitize how print orders are recorded
+- Accept and process printing orders
+- Automatically compute total cost based on print type and pricing
+- Allow viewing of one or all orders
+- Reduce erros in computation and order details
 
 4. Users
 - Printing shop staff
 - Shop owner or manager
 
+5. Functional Requirements
+- The system shall accept printing orders
+- The system shall compute total cost based on print type, pricing and amount of pages
+- The system shall support these print types: Black & White, Colored and Photo Paper
+- The system shall generate unique IDs for each orders
+- The system shall be able to retrieve specific order details
+- The system shall allow updating the status of the orders (e.g., pending, completed)
+
+
+6. Non-Functional Requirements
+- The API shall responsd in less than 3 seconds
+- JSON responses must be clear and structured properly
+- The system shall carefully validate all input before processing
+- The API should ensure data consistency
+
+
+7. Data Model Order Fields
+- order_id
+- customer_name
+- document_name
+- pages
+- print_type
+- total_cost
+- status
+
+
+8. Proposed API Endpoints
+- POST /orders
+- GET /orders
+- GET /orders/{order_id}
+- PATCH /orders/{order_id}/status
+- DELETE /orders/{order_id}
+- GET /pricing
+- GET /
+
+
 Printing Price:
 Black & White: PHP 2.00/page
-Colored: PHP: 5.00/page
+Colored: PHP 5.00/page
 Photo Paper: PHP: 20.00/people
