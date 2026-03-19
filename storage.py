@@ -30,6 +30,15 @@ def save_orders(orders: list[dict]) -> None:
         json.dump(orders, f, indent=2)
 
 
+def get_next_order_id() -> int:
+    """Get the next order ID (incremental)"""
+    orders = load_orders()
+    if not orders:
+        return 1
+    max_id = max(int(order.get("order_id", 0)) for order in orders)
+    return max_id + 1
+
+
 def add_order(order: Order) -> Order:
     """Add a new order to storage"""
     orders = load_orders()

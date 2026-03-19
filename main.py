@@ -1,6 +1,5 @@
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-import uuid
 
 from models import (
     OrderCreate, 
@@ -82,7 +81,7 @@ def create_order(order_data: OrderCreate):
     total_cost = price_per_page * order_data.pages
 
     order = Order(
-        order_id=str(uuid.uuid4())[:8].upper(),
+        order_id=str(storage.get_next_order_id()),
         customer_name=order_data.customer_name,
         document_name=order_data.document_name,
         pages=order_data.pages,
