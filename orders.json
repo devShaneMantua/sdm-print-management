@@ -1,11 +1,11 @@
 [
   {
-    "order_id": "90D69CD8",
-    "customer_name": "Shane Mantua",
+    "order_id": "2",
+    "customer_name": "John Doe",
     "document_name": "Print this",
-    "pages": 1,
+    "pages": 4,
     "print_type": "black_white",
-    "total_cost": 2.0,
+    "total_cost": 8.0,
     "status": "completed"
   }
 ]
